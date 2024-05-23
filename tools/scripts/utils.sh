@@ -15,7 +15,8 @@ create_env() {
 setup() {
     pnpm seed:cva $current_dir
     pnpm migrate:dev
-    # pnpm seed:project
+    pnpm seed:project
+    pnpm fund:project
     # pnpm seed:networks  $current_dir
     # pnpm fund:project $current_dir
     # pnpm charge:beneficiary $current_dir

@@ -43,6 +43,9 @@ const modifyEnv = async (uuid: string, privateKey: string) => {
       if (line.startsWith('DEPLOYER_PRIVATE_KEY')) {
         return `DEPLOYER_PRIVATE_KEY=${privateKey}`;
       }
+      if (line.startsWith('OTP_SERVER_PRIVATE_KEY')) {
+        return `OTP_SERVER_PRIVATE_KEY=${privateKey}`;
+      }
       return line;
     });
 
