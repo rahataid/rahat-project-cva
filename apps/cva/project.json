@@ -1,0 +1,24 @@
+{
+  "name": "cva",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/cva/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "cva:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "cva:build:development"
+        },
+        "production": {
+          "buildTarget": "cva:build:production"
+        }
+      }
+    }
+  }
+}
