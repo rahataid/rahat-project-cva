@@ -3,8 +3,12 @@ import { ContractLib } from './_common';
 import { uuidV4 } from 'ethers';
 import { randomBytes } from 'crypto';
 import { writeFileSync } from 'fs';
-
+import { PrismaService } from '@rumsan/prisma';
+import { SettingsService } from '@rumsan/extensions/settings';
 dotenv.config();
+
+const prisma = new PrismaService();
+const settings = new SettingsService(prisma);
 
 const contractName = [
   'RahatDonor',
@@ -129,11 +133,27 @@ class SeedProject extends ContractLib {
       )
     );
   }
+
+  public async addContractSettings() {
+    const contracts = await this.getDeployedContractDetails(
+      this.projectUUID,
+      contractName
+    );
+    // console.log('contracts', contracts);
+    const data = {
+      name: 'Contract',
+      value: contracts,
+      isPrivate: false,
+    };
+
+    await settings.create(data);
+  }
 }
 
 async function main() {
   const seedProject = new SeedProject();
   await seedProject.deployCVAContracts();
+  await seedProject.addContractSettings();
 }
 main().catch((error) => {
   console.error(error);

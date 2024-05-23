@@ -22,6 +22,11 @@ setup() {
     # pnpm charge:beneficiary $current_dir
 }
 
+seed_settings(){
+    pnpm seed:settings $graph_url
+}
+
+
 graph_setup() {
     pnpm graph:create-local
     graph_url=$(pnpm graph:deploy-local | grep -o 'http://[^ ]*' | tail -1)

@@ -19,6 +19,7 @@ export class BeneficiaryService {
     this.rsprisma = prisma.rsclient;
   }
   async create(dto: CreateBeneficiaryDto) {
+    console.log({ dto });
     return this.rsprisma.beneficiary.create({
       data: dto,
     });
