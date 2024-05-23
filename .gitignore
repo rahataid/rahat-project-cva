@@ -43,3 +43,11 @@ Thumbs.db
 #Environment Variables
 .env
 .npmrc
+
+# TypeChain files
+typechain/
+typechain-types/
+
+#graph
+generated/
+build/
