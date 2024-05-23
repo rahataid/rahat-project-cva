@@ -24,6 +24,13 @@ export const CONTROLLERS = {
     UPDATE: NAMESPACE + '.appsetting.update',
     REMOVE: NAMESPACE + '.appsetting.remove',
   },
+  VENDOR: {
+    CREATE: NAMESPACE + '.vendor.create',
+    LIST: NAMESPACE + '.vendor.list',
+    LISTONE: NAMESPACE + '.vendor.listone',
+    UPDATE: NAMESPACE + '.vendor.update',
+    BLOCKCHAIN: NAMESPACE + '.vendor.blockchain',
+  },
 };
 export const QUEUE = {
   RAHAT: 'RAHAT',
@@ -63,6 +70,12 @@ export const JOBS = {
     LIST: 'rahat.jobs.campaign.list',
     GET: 'rahat.jobs.campaign.get',
     REMOVE: 'rahat.jobs.campaign.remove',
+  },
+  VENDOR: {
+    CREATE: 'rahat.jobs.vendor.add_to_project',
+    LIST: 'rahat.jobs.vendor.list',
+    GET: 'rahat.jobs.vendor.get',
+    UPDATE: 'rahat.jobs.vendor.update',
   },
 };
 

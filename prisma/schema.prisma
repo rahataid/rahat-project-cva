@@ -48,3 +48,12 @@ model Beneficiary {
 
   @@map("tbl_beneficiaries")
 }
+
+model Vendor {
+  id            Int          @id @default(autoincrement()) @db.Integer()
+  uuid          String       @db.Uuid() @unique
+  walletAddress String?
+  extras        Json?
+
+  @@map("tbl_vendors")
+}
