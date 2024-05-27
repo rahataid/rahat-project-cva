@@ -1,0 +1,4 @@
+dist
+.nx
+node_modules
+tmp
