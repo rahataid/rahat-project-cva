@@ -39,6 +39,7 @@
     "@rumsan/prisma": "^1.0.130",
     "@rumsan/settings": "^0.0.108",
     "axios": "^1.6.0",
+    "class-validator": "^0.14.1",
     "dotenv": "^16.4.5",
     "ethers": "^6.12.1",
     "hardhat-gas-reporter": "^2.1.1",
