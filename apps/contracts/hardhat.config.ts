@@ -136,6 +136,10 @@ const config: ExtendedHardhatUserConfig = {
     'polygon-mumbai': getChainConfig('polygon-mumbai'),
     sepolia: getChainConfig('sepolia'),
   },
+
+  sourcify: {
+    enabled: true,
+  },
 };
 
 export default config;

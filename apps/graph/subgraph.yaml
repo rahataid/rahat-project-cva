@@ -6,11 +6,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: RahatDonor
-    network: mainnet
+    network: sepolia
     source:
-      address: "0xd0a90c8656236148c5Ec0C8C98252155C78aEF56"
+      address: "0xc34Caa6FF4Ea3e974f82964dB7Ab272FAb3CE38e"
       abi: RahatDonor
-      startBlock: 0
+      startBlock: 6147090
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
