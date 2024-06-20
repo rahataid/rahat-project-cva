@@ -18,8 +18,8 @@ const contractName = [
 ];
 
 const rahatTokenDetails = {
-  name: 'Rumsan Coin',
-  symbol: 'RUM',
+  name: 'USD Coin',
+  symbol: 'USDC',
   decimals: 18,
 };
 
@@ -51,13 +51,13 @@ const verify = async (contractAddress, args) => {
 };
 
 (async function () {
-  await verify(contractAddress[0], [
-    `0x17469fF5Bdc86a5FCeb4604534fF2a47a821d421`,
-  ]);
+  //   await verify(contractAddress[0], [
+  //     `0x17469fF5Bdc86a5FCeb4604534fF2a47a821d421`,
+  //   ]);
 
-  await verify(contractAddress[1], []);
+  //   await verify(contractAddress[1], []);
 
-  await verify(contractAddress[2], ['Rumsan Forwarder']);
+  //   await verify(contractAddress[2], ['Rumsan Forwarder']);
 
   await verify(contractAddress[3], [
     rahatTokenDetails.name,
@@ -66,11 +66,11 @@ const verify = async (contractAddress, args) => {
     rahatTokenDetails.decimals,
   ]);
 
-  await verify(contractAddress[4], [
-    cvaProjectDetails.name,
-    contractAddress[3],
-    contractAddress[1],
-    `0x17469fF5Bdc86a5FCeb4604534fF2a47a821d421`,
-    contractAddress[2],
-  ]);
+  //   await verify(contractAddress[4], [
+  //     cvaProjectDetails.name,
+  //     contractAddress[3],
+  //     contractAddress[1],
+  //     `0x17469fF5Bdc86a5FCeb4604534fF2a47a821d421`,
+  //     contractAddress[2],
+  //   ]);
 })();
