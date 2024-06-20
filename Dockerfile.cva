@@ -1,0 +1,17 @@
+ARG VARIANT=node:20-alpine
+
+FROM ${VARIANT} AS base
+RUN apk add --no-cache libc6-compat 
+
+# Install dependencies only when needed
+FROM base AS deps
+WORKDIR /usr/src/app
+COPY ./dist/apps/cva/package.json .npmrc ./
+RUN npm install -g pnpm && pnpm install
+
+FROM base AS builder
+WORKDIR /usr/src/app
+COPY ./dist/apps/cva/ ./
+COPY --from=deps /usr/src/app/node_modules ./node_modules
+RUN npm install -g pnpm && pnpx prisma generate
+CMD [ "node", "main.js" ]

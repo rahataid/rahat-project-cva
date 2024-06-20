@@ -1,0 +1,55 @@
+{
+  "name": "cva",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/cva/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "dependsOn": [
+        "mainBuild"
+      ],
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "cp -r prisma/ dist/apps/cva/prisma && cp -r tools/ dist/apps/cva/tools && node apps/cva/modify-package.js"
+        ]
+      }
+    },
+    "mainBuild": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "generatePackageJson": true,
+        "outputPath": "dist/apps/cva",
+        "main": "apps/cva/src/main.ts",
+        "tsConfig": "apps/cva/tsconfig.app.json",
+        "assets": [],
+        "webpackConfig": "apps/cva/webpack.config.js"
+      },
+      "configurations": {
+        "devcvaopment": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "devcvaopment",
+      "options": {
+        "buildTarget": "cva:build"
+      },
+      "configurations": {
+        "devcvaopment": {
+          "buildTarget": "cva:build:devcvaopment"
+        },
+        "production": {
+          "buildTarget": "cva:build:production"
+        }
+      }
+    }
+  }
+}
