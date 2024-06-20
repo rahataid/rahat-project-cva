@@ -1,0 +1,33 @@
+type OwnerAdded @entity(immutable: true) {
+  id: Bytes!
+  param0: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnerRemoved @entity(immutable: true) {
+  id: Bytes!
+  param0: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TokenCreated @entity(immutable: true) {
+  id: Bytes!
+  tokenAddress: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TokenMintedAndApproved @entity(immutable: true) {
+  id: Bytes!
+  tokenAddress: Bytes! # address
+  approveAddress: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

@@ -28,20 +28,17 @@ export class VendorService {
       },
     });
 
-    // const result = data.map((dat) => {
-    //   const vendorData = vendata.find((ven) => ven.uuid === dat.vendorId);
-    //   const redemptionData = vendorData ? vendorData.VoucherRedemption : [];
-    //   // const redemptionNumber = redemptionData.length;
-    //   const voucherNumbers = redemptionData.reduce(
-    //     (total, redemption) => total + redemption.voucherNumber,
-    //     0
-    //   );
-    //   return {
-    //     ...dat,
-    //     redemptionNumber: voucherNumbers,
-    //   };
-    // });
-    return vendata;
+
+    const result = data.map((dat) => {
+      const vendorData = vendata.find((ven) => ven.uuid === dat.vendorId);
+      console.log({ vendorData });
+
+      return {
+        ...dat,
+      };
+    });
+    console.log({ result });
+    return result;
   }
 
   async findOne(id: number) {

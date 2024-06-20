@@ -1,0 +1,22 @@
+{
+  "RahatDonor": {
+    "address": "0x3dbA28C6A9AAE833D1835e3A01862AcBc2ad1e36",
+    "startBlock": 1
+  },
+  "RahatClaim": {
+    "address": "0xbA56028cD40B85971857c1Ba3145837798C05252",
+    "startBlock": 1
+  },
+  "ERC2771Forwarder": {
+    "address": "0x6761Bcb44964f3692601878fab15C9Ab78Bf1668",
+    "startBlock": 1
+  },
+  "RahatToken": {
+    "address": "0x529C7156d89448F523cbAa1a8D7aA18c3C5Ca8Ab",
+    "startBlock": 1
+  },
+  "CVAProject": {
+    "address": "0xA2C884C6f862E7E766eF3999EFBadDfE75Ee6Bbe",
+    "startBlock": 1
+  }
+}

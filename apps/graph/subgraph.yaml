@@ -1,0 +1,35 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: RahatDonor
+    network: mainnet
+    source:
+      address: "0xd0a90c8656236148c5Ec0C8C98252155C78aEF56"
+      abi: RahatDonor
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - OwnerAdded
+        - OwnerRemoved
+        - TokenCreated
+        - TokenMintedAndApproved
+      abis:
+        - name: RahatDonor
+          file: ./abis/RahatDonor.json
+      eventHandlers:
+        - event: OwnerAdded(indexed address)
+          handler: handleOwnerAdded
+        - event: OwnerRemoved(indexed address)
+          handler: handleOwnerRemoved
+        - event: TokenCreated(indexed address)
+          handler: handleTokenCreated
+        - event: TokenMintedAndApproved(indexed address,indexed address,uint256)
+          handler: handleTokenMintedAndApproved
+      file: ./src/rahat-donor.ts

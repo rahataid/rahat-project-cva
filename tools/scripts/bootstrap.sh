@@ -8,5 +8,5 @@ create_env
 gen_prisma
 setup
 seed_settings
-# graph_setup
+graph_setup
 

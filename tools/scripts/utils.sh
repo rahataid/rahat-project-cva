@@ -30,6 +30,7 @@ seed_settings(){
 graph_setup() {
     pnpm graph:create-local
     graph_url=$(pnpm graph:deploy-local | grep -o 'http://[^ ]*' | tail -1)
+    echo $graph_url
     export graph_url
 }
 
