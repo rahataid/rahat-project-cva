@@ -16,8 +16,8 @@ setup() {
     pnpm seed:cva $current_dir
     pnpm migrate:dev
     pnpm seed:project
-    pnpm fund:project
-    # pnpm seed:networks  $current_dir
+    pnpm seed:networks  $current_dir
+    # pnpm fund:project
     # pnpm fund:project $current_dir
     # pnpm charge:beneficiary $current_dir
 }
@@ -29,14 +29,13 @@ seed_settings(){
 
 graph_setup() {
     pnpm graph:create-local
+    echo "Graph Deploying Locally..."
     graph_url=$(pnpm graph:deploy-local | grep -o 'http://[^ ]*' | tail -1)
     echo $graph_url
     export graph_url
 }
 
-seed_settings(){
-    pnpm seed:settings $graph_url
-}
+
 
 drop_pg_database() {
     CONTAINER_NAME=postgres-rahat

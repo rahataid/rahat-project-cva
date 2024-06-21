@@ -3,6 +3,40 @@
     "RahatDonor": {
       "address": "0xc34Caa6FF4Ea3e974f82964dB7Ab272FAb3CE38e",
       "startBlock": 6147090
+    },
+    "RahatClaim": {
+      "address": "0x2Bc2e472735862960c63aaFAF246A856ba755feE"
+    },
+    "ForwarderContract": {
+      "address": "0x29ca821A27d73A68DbB228215e5addCE1e654D47"
+    },
+    "RahatToken": {
+      "address": "0x79c21499f7cE045e5F82d2374c06441918554e73"
+    },
+    "CVAProject": {
+      "address": "0xB74eb793E799aF1145BB880F2fE9636aA6f87ac3"
+    }
+  },
+  "mainnet": {
+    "RahatDonor": {
+      "address": "0xe19047559155d90D82a5199F1ed4A1d5EA95E087",
+      "startBlock": 1
+    },
+    "RahatClaim": {
+      "address": "0x94B840a57B4fe5B404Ec9c76C6A1BC9A3e29b0eb",
+      "startBlock": 1
+    },
+    "ForwarderContract": {
+      "address": "0xFCBbb042C8E1Cad3CDAa752186dbA6e0CE810E6B",
+      "startBlock": 1
+    },
+    "RahatToken": {
+      "address": "0xC2930B7c15d0646a7538b22a005Bda206b004e87",
+      "startBlock": 1
+    },
+    "CVAProject": {
+      "address": "0x04d7B67059F261138dda08262821892e13522de8",
+      "startBlock": 1
     }
   }
 }

@@ -6,11 +6,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: RahatDonor
-    network: sepolia
+    network: mainnet
     source:
-      address: "0xc34Caa6FF4Ea3e974f82964dB7Ab272FAb3CE38e"
       abi: RahatDonor
-      startBlock: 6147090
+      address: "0xe19047559155d90D82a5199F1ed4A1d5EA95E087"
+      startBlock: 1
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -33,3 +33,132 @@ dataSources:
         - event: TokenMintedAndApproved(indexed address,indexed address,uint256)
           handler: handleTokenMintedAndApproved
       file: ./src/rahat-donor.ts
+  - kind: ethereum
+    name: RahatClaim
+    network: mainnet
+    source:
+      abi: RahatClaim
+      address: "0x94B840a57B4fe5B404Ec9c76C6A1BC9A3e29b0eb"
+      startBlock: 1
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ClaimCreated
+        - ClaimProcessed
+        - OtpAddedToClaim
+      abis:
+        - name: RahatClaim
+          file: ./abis/RahatClaim.json
+      eventHandlers:
+        - event: ClaimCreated(indexed uint256,indexed address,indexed
+            address,address,address,uint256)
+          handler: handleClaimCreated
+        - event: ClaimProcessed(indexed uint256)
+          handler: handleClaimProcessed
+        - event: OtpAddedToClaim(indexed uint256)
+          handler: handleOtpAddedToClaim
+      file: ./src/rahat-claim.ts
+  - kind: ethereum
+    name: ForwarderContract
+    network: mainnet
+    source:
+      abi: ForwarderContract
+      address: "0xFCBbb042C8E1Cad3CDAa752186dbA6e0CE810E6B"
+      startBlock: 1
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - EIP712DomainChanged
+        - ExecutedForwardRequest
+      abis:
+        - name: ForwarderContract
+          file: ./abis/ForwarderContract.json
+      eventHandlers:
+        - event: EIP712DomainChanged()
+          handler: handleEIP712DomainChanged
+        - event: ExecutedForwardRequest(indexed address,uint256,bool)
+          handler: handleExecutedForwardRequest
+      file: ./src/forwarder-contract.ts
+  - kind: ethereum
+    name: RahatToken
+    network: mainnet
+    source:
+      abi: RahatToken
+      address: "0xC2930B7c15d0646a7538b22a005Bda206b004e87"
+      startBlock: 1
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - RahatTokenOwnerAdded
+        - RahatTokenOwnerRemoved
+        - Transfer
+      abis:
+        - name: RahatToken
+          file: ./abis/RahatToken.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: OwnerAdded(indexed address)
+          handler: handleOwnerAdded
+        - event: OwnerRemoved(indexed address)
+          handler: handleOwnerRemoved
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/rahat-token.ts
+  - kind: ethereum
+    name: CVAProject
+    network: mainnet
+    source:
+      abi: CVAProject
+      address: "0x04d7B67059F261138dda08262821892e13522de8"
+      startBlock: 1
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BeneficiaryAdded
+        - BeneficiaryRemoved
+        - ClaimAdjusted
+        - ClaimAssigned
+        - CVAProjectClaimProcessed
+        - OtpServerUpdated
+        - TokenBudgetDecrease
+        - TokenBudgetIncrease
+        - TokenReceived
+        - TokenRegistered
+        - TokenTransfer
+      abis:
+        - name: CVAProject
+          file: ./abis/CVAProject.json
+      eventHandlers:
+        - event: BeneficiaryAdded(indexed address)
+          handler: handleBeneficiaryAdded
+        - event: BeneficiaryRemoved(indexed address)
+          handler: handleBeneficiaryRemoved
+        - event: ClaimAdjusted(indexed address,int256)
+          handler: handleClaimAdjusted
+        - event: ClaimAssigned(indexed address,uint256)
+          handler: handleClaimAssigned
+        - event: ClaimProcessed(indexed address,indexed address,indexed address,uint256)
+          handler: handleClaimProcessed
+        - event: OtpServerUpdated(indexed address)
+          handler: handleOtpServerUpdated
+        - event: TokenBudgetDecrease(indexed address,uint256)
+          handler: handleTokenBudgetDecrease
+        - event: TokenBudgetIncrease(indexed address,uint256)
+          handler: handleTokenBudgetIncrease
+        - event: TokenReceived(indexed address,indexed address,uint256)
+          handler: handleTokenReceived
+        - event: TokenRegistered(indexed address)
+          handler: handleTokenRegistered
+        - event: TokenTransfer(indexed address,indexed address,uint256)
+          handler: handleTokenTransfer
+      file: ./src/cva-project.ts

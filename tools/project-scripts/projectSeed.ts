@@ -14,7 +14,7 @@ const contractName = [
   'RahatDonor',
   'RahatClaim',
   'RahatToken',
-  'ERC2771Forwarder',
+  'ForwarderContract',
   'CVAProject',
 ];
 
@@ -67,8 +67,8 @@ class SeedProject extends ContractLib {
       blockNumber: DonorContract.blockNumber,
     });
 
-    console.log('----------Depolying Forwarder Contracts-------------------');
-    const ForwarderContract = await this.deployContract('ERC2771Forwarder', [
+    console.log('----------Depolying Forwarder Contracts--------------------');
+    const ForwarderContract = await this.deployContract('ForwarderContract', [
       'Rumsan Forwarder',
     ]);
     console.log({
@@ -114,7 +114,7 @@ class SeedProject extends ContractLib {
             address: ClaimContract.contract.target,
             startBlock: ClaimContract.blockNumber,
           },
-          ERC2771Forwarder: {
+          ForwarderContract: {
             address: ForwarderContract.contract.target,
             startBlock: ForwarderContract.blockNumber,
           },

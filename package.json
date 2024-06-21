@@ -11,6 +11,7 @@
     "build:cva": "npx nx build cva",
     "seed:cva": "ts-node ./tools/scripts/seed.cva.ts",
     "seed:project": "ts-node ./tools/project-scripts/projectSeed",
+    "seed:networks": "ts-node ./tools/project-scripts/networksSeed",
     "seed:settings": "ts-node ./tools/project-scripts/settingsSeed",
     "fund:project": "ts-node  tools/project-scripts/fundProject",
     "migrate:dev": "prisma migrate dev --preview-feature",
@@ -21,7 +22,17 @@
     "migrate:resolve": "npx prisma migrate resolve --preview-feature",
     "prisma:studio": "npx prisma studio",
     "prisma:generate": "npx prisma generate",
-    "prisma:generate:watch": "npx prisma generate --watch"
+    "prisma:generate:watch": "npx prisma generate --watch",
+    "graph:codegen": "cd ./apps/graph && graph codegen",
+    "graph:build": "cd ./apps/graph && graph build",
+    "graph:deploy": "cd ./apps/graph && graph deploy --node https://api.thegraph.com/deploy/ anupamakoirala/cva",
+    "graph:create-local": "cd ./apps/graph && graph create --node http://localhost:8020/ rahat/cva",
+    "graph:remove-local": "cd ./apps/graph && graph remove --node http://localhost:8020/ rahat/cva",
+    "graph:deploy-local": "cd ./apps/graph && graph deploy -l v0.0.1 --node http://localhost:8020/ --ipfs http://localhost:5001 --network mainnet  rahat/cva",
+    "graph:studio:deploy-mumbai": "cd ./apps/graph && graph deploy --studio --network mumbai cva-dev",
+    "graph:studio:deploy-arbitrum-sepolia-dev": "cd ./apps/graph && graph deploy --studio --network arbitrum-sepolia cva-dev-arbi",
+    "graph:studio:deploy-arbitrum-sepolia-stage": "cd ./apps/graph && graph deploy --studio --network arbitrum-sepolia cva-stage-arbi",
+    "graph:studio:deploy-base-sepolia": "cd ./apps/graph-new && graph deploy --studio --network base-sepolia rahat-cva-dev"
   },
   "private": true,
   "dependencies": {
