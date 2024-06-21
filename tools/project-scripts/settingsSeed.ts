@@ -9,6 +9,7 @@ const prismaClient = new PrismaClient({
 
 const prisma = new PrismaService();
 const settings = new SettingsService(prisma);
+const subGraphURL = process.argv[2];
 const SETTINGS_DB_NAME = 'CVA_DEV';
 
 class SettingsSeed extends ContractLib {
@@ -53,6 +54,23 @@ class SettingsSeed extends ContractLib {
       isPrivate: false,
     });
   }
+
+  public async addGraphSettings() {
+    const formatted = subGraphURL.substring(
+      0,
+      subGraphURL.indexOf('\\') !== -1 ? subGraphURL.indexOf('\\') : undefined
+    );
+    const formattedUrl = formatted
+      ? formatted
+      : 'http://localhost:8000/subgraphs/name/rahat/cva';
+    await settings.create({
+      name: 'Subgraph_URL',
+      value: {
+        url: formattedUrl,
+      },
+      isPrivate: false,
+    });
+  }
 }
 
 async function main() {
@@ -62,6 +80,7 @@ async function main() {
 
   await seedProject.addAppSettings();
   await seedProject.addAdminAddress(adminAccounts[0]);
+  await seedProject.addGraphSettings();
 
   process.exit(0);
 }
