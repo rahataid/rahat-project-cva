@@ -57,3 +57,10 @@ model Vendor {
 
   @@map("tbl_vendors")
 }
+
+model Campaign {
+  id            Int     @id @default(autoincrement()) @db.Integer()
+  campaignId    Int
+
+  @@map(name: "tbl_campaign")
+}
