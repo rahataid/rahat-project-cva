@@ -7,9 +7,17 @@ import { SettingsModule } from '@rumsan/settings';
 import { BeneficiaryModule } from '../beneficiary/beneficiary.module';
 import { VendorModule } from '../vendor/vendor.module';
 import { CampaignModule } from '../campaign/campaign.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [PrismaModule, SettingsModule, BeneficiaryModule, VendorModule,CampaignModule],
+  imports: [
+    PrismaModule,
+    SettingsModule,
+    BeneficiaryModule,
+    VendorModule,
+    CampaignModule,
+    ConfigModule.forRoot({ isGlobal: true }),
+  ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })
